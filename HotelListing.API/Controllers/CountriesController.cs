@@ -35,8 +35,9 @@ namespace HotelListing.API.Controllers
         [HttpGet("GetAll")]
         public async Task<ActionResult<IEnumerable<GetCountryDto>>> GetCountries()
         {
-            var result = await _countriesRepository.GetAllAsync();
-            var countries = _mapper.Map<List<GetCountryDto>>(result);
+            //var result = await _countriesRepository.GetAllAsync();
+            //var countries = _mapper.Map<List<GetCountryDto>>(result);
+            var countries = await _countriesRepository.GetAllAsync<GetCountryDto>();
             return Ok(countries);
         }
 
