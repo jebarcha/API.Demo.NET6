@@ -15,6 +15,7 @@ namespace HotelListing.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class HotelsController : ControllerBase
     {
         private readonly IMapper _mapper;
@@ -30,7 +31,7 @@ namespace HotelListing.API.Controllers
         [HttpGet("GetAll")]
         public async Task<ActionResult<IEnumerable<HotelDto>>> GetHotels()
         {
-            var hotels = await _hotelsRepository.GetAllAsync<List<HotelDto>>();
+            var hotels = await _hotelsRepository.GetAllAsync<HotelDto>();
             return Ok(hotels);
         }
 
